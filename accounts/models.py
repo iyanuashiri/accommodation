@@ -3,6 +3,8 @@ from django.conf import settings
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.utils.translation import ugettext_lazy as _
+from django.core.mail import send_mail
+
 
 from .managers import UserManager
 
@@ -36,7 +38,16 @@ class User(AbstractBaseUser, PermissionsMixin):
         """
         Return the fullname
         """
-        return self.fullname
+        fullname = '{0} {1}'.format(self.first_name, self.last_name)
+        return fullname
+
+    def get_short_name(self):
+        """Return the short name for the user."""
+        return self.first_name
+
+    def email_user(self, subject, message, from_email=None, **kwargs):
+        """Send an email to this user."""
+        send_mail(subject, message, from_email, [self.email_address], **kwargs)
 
 
 class Tenant(models.Model):
