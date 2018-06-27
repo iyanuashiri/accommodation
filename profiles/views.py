@@ -1,12 +1,9 @@
 from django.shortcuts import render
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
-from events.models import Event
-from comments.models import Comment
-
+from accounts.models import Tenant
 from .forms import ProfileForm, UserForm
 from .models import Profile
 
@@ -38,16 +35,10 @@ def edit_profile(request):
         user_form = UserForm(instance=request.user)
         profile_form = ProfileForm(instance=request.user.profile)
 
-    return render(request, 'userprofile/update_form.html', {'user_form': user_form, 'profile_form': profile_form})
+    return render(request, 'profiles/update_form.html', {'user_form': user_form, 'profile_form': profile_form})
 
 
-class UserDetail(LoginRequiredMixin, generic.DetailView):
-    model = User
-    template_name = 'userprofile/profile_detail.html'
-    context_object_name = 'user'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['events'] = Event.objects.filter(creator=self.request.user)
-        context['comments'] = Comment.objects.filter(created_by=self.request.user)
-        return context
+class ProfileDetail(LoginRequiredMixin, generic.DetailView):
+    model = Tenant
+    template_name = 'profiles/profile_detail.html'
+    context_object_name = 'tenant'
