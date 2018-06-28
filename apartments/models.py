@@ -10,14 +10,35 @@ from accounts.models import Tenant, LandLord
 
 
 class Apartment(models.Model):
+
+    ONE = 'on'
+    TWO = 'tw'
+    THREE = 'th'
+    FOUR = 'fo'
+    FIVE = 'fi'
+
+    NUMBER_OF_ROOMS = (
+        (ONE, 'One'),
+        (TWO, 'Two'),
+        (THREE, 'Three'),
+        (FOUR, 'Four'),
+        (FIVE, 'Five'),
+    )
+
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, blank=True)
     picture = CloudinaryField('image', blank=True)
     description = models.TextField(max_length=1000)
     available = models.BooleanField(default=True)
     location = models.CharField(max_length=10)
-    tenants = models.ManyToManyField(Tenant, related_name='rents', blank=True)
+    renter = models.ManyToManyField(Tenant, related_name='rents', blank=True)
     created_by = models.ForeignKey(LandLord, on_delete=models.CASCADE, related_name='apartments')
+    rent = models.CharField(max_length=20)
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+    house_type = models.CharField(max_length=50)
+    duration = models.CharField(max_length=50, default='1 YEAR')
+    number_of_rooms = models.CharField(max_length=2, choices=NUMBER_OF_ROOMS, default=ONE)
 
     class Meta:
         verbose_name_plural = 'apartments'
