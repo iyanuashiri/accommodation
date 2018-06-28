@@ -5,6 +5,7 @@ from . import views
 
 app_name = 'accounts'
 urlpatterns = [
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('signup/', views.TenantSignUpView.as_view(), name='signup'),
+    path('', include('django.contrib.auth.urls')),
+    path('tenant/signup/', views.TenantSignUpView.as_view(), name='tenant_signup'),
+    path('landlord/signup/', views.LandLordSignUpView.as_view(), name='landlord_signup')
 ]

@@ -13,6 +13,7 @@ from .managers import UserManager
 
 class User(AbstractBaseUser, PermissionsMixin):
     is_tenant = models.BooleanField(default=False)
+    is_landlord = models.BooleanField(default=False)
 
     email_address = models.EmailField(
         _('email address'),
@@ -56,6 +57,17 @@ class Tenant(models.Model):
     class Meta:
         verbose_name = 'tenant'
         verbose_name_plural = 'tenants'
+
+    def __str__(self):
+        return self.user.fullname
+
+
+class LandLord(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, primary_key=True)
+
+    class Meta:
+        verbose_name = 'landlord'
+        verbose_name_plural = 'landlords'
 
     def __str__(self):
         return self.user.fullname
