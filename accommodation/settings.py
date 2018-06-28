@@ -48,7 +48,7 @@ INSTALLED_APPS = [
 
     'accounts',
     'profiles',
-    'rooms',
+    'apartments',
 ]
 
 MIDDLEWARE = [
