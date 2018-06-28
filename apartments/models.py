@@ -32,7 +32,7 @@ class Apartment(models.Model):
     available = models.BooleanField(default=True)
     location = models.CharField(max_length=10)
     renter = models.ManyToManyField(Tenant, related_name='rents', blank=True)
-    created_by = models.ForeignKey(LandLord, on_delete=models.CASCADE, related_name='apartments')
+    creator = models.ForeignKey(LandLord, on_delete=models.CASCADE, related_name='apartments')
     rent = models.CharField(max_length=20)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
