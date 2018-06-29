@@ -41,7 +41,7 @@ class ApartmentUpdate(LoginRequiredMixin, SuccessMessageMixin, ApartmentFormMixi
     success_message = "%(name)s was updated successfully"
 
 
-class ApartmentDelete(LoginRequiredMixin, SuccessMessageMixin, generic.UpdateView):
+class ApartmentDelete(LoginRequiredMixin, SuccessMessageMixin, generic.DeleteView):
     model = Apartment
     template_name = 'apartments/apartment_confirm_delete.html'
     success_url = reverse_lazy('apartments:delete')
