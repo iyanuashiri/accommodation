@@ -1,11 +1,11 @@
 {% extends 'apartments/base.html' %}
-{% load tz %}
+{% load crispy_forms_filters %}
     {% block content %}
         {{ form.media }}
         <div class="mx-auto w-75">
             <h1></h1>
             <form method="post" action="{% url 'apartments:update' apartment.id %}" enctype="multipart/form-data"> {% csrf_token %}
-                {{ form.as_p }}
+                {{ form|crispy }}
                 <button class="" type="submit"> Create</button>
             </form>
       </div>
