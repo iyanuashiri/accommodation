@@ -4,6 +4,7 @@ from django.utils.text import slugify
 from django.conf import settings
 
 from cloudinary.models import CloudinaryField
+from tinymce import HTMLField
 
 from accounts.models import Tenant, LandLord
 
@@ -29,7 +30,7 @@ class Apartment(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, blank=True)
     picture = CloudinaryField('image', blank=True)
-    description = models.TextField(max_length=1000)
+    description = HTMLField('Description')
     available = models.BooleanField(default=True)
     location = models.CharField(max_length=10)
     renter = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='rents', blank=True)
