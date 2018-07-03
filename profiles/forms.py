@@ -15,4 +15,5 @@ class ProfileForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ('date_of_birth', 'picture')
+        fields = ('date_of_birth', 'picture', 'institution', 'NYSC_call_up_number', 'staff_code_number',
+                  'mobile_number', 'state_of_service')
