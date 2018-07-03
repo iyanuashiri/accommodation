@@ -1,0 +1,15 @@
+{% extends 'apartments/base.html' %}
+{% load static %}
+{% load cloudinary %}
+
+
+{% block content %}
+    <div class="ui segment text container">
+        <h1>Edit your profile</h1>
+        <form method="post" action="{% url 'profiles:edit' %}" enctype="multipart/form-data">{% csrf_token %}
+            {{ user_form}}
+            {{ profile_form}}
+            <button class="" type="submit">Save changes</button>
+        </form>
+    </div>
+{% endblock %}

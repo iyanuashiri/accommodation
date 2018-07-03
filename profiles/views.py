@@ -3,7 +3,7 @@ from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 
-from accounts.models import Tenant
+from accounts.models import Tenant, User
 from .forms import ProfileForm, UserForm
 from .models import Profile
 
@@ -39,6 +39,6 @@ def edit_profile(request):
 
 
 class ProfileDetail(LoginRequiredMixin, generic.DetailView):
-    model = Tenant
+    model = Profile
     template_name = 'profiles/profile_detail.html'
-    context_object_name = 'tenant'
+    context_object_name = 'profile'

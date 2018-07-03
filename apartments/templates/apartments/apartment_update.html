@@ -2,9 +2,9 @@
 {% load tz %}
     {% block content %}
         {{ form.media }}
-        <div class="ui segment container">
-            <h1>Create an Apartment</h1>
-            <form method="post" action="{% url 'apartments:create' %}" enctype="multipart/form-data"> {% csrf_token %}
+        <div class="mx-auto w-75">
+            <h1></h1>
+            <form method="post" action="{% url 'apartments:update' apartment.id %}" enctype="multipart/form-data"> {% csrf_token %}
                 {{ form.as_p }}
                 <button class="" type="submit"> Create</button>
             </form>

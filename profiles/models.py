@@ -12,6 +12,12 @@ class Profile(models.Model):
     user = models.OneToOneField(Tenant, on_delete=models.CASCADE)
     date_of_birth = models.DateField(blank=True, null=True)
     picture = CloudinaryField('image', blank=True, null=True)
+    institution = models.TextField(max_length=100)
+    NYSC_call_up_number = models.CharField(max_length=50)
+    staff_code_number = models.CharField(max_length=50)
+    mobile_number = models.CharField(max_length=20)
+    state_of_service = models.TextField(max_length=20)
+
 
     class Meta:
         verbose_name_plural = 'profiles'

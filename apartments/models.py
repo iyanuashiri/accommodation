@@ -1,6 +1,7 @@
 from django.db import models
 from django.shortcuts import reverse
 from django.utils.text import slugify
+from django.conf import settings
 
 from cloudinary.models import CloudinaryField
 
@@ -31,8 +32,8 @@ class Apartment(models.Model):
     description = models.TextField(max_length=1000)
     available = models.BooleanField(default=True)
     location = models.CharField(max_length=10)
-    renter = models.ManyToManyField(Tenant, related_name='rents', blank=True)
-    creator = models.ForeignKey(LandLord, on_delete=models.CASCADE, related_name='apartments')
+    renter = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='rents', blank=True)
+    creator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='apartments')
     rent = models.CharField(max_length=20)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
@@ -48,7 +49,7 @@ class Apartment(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('apartments:detail', kwargs={'slug': self.slug})
+        return reverse('apartments:detail', kwargs={'pk': self.pk})
 
     def save(self, *args, **kwargs):
         if not self.slug:

@@ -1,0 +1,24 @@
+{% extends 'apartments/base.html' %}
+{% load static %}
+{% load cloudinary %}
+    {% block content %}
+        <div class="ui yellow segment container">
+            <div>
+                {% cloudinary profile.picture width=150 height=170 crop="fill" gravity='face' radius='max' %}
+            </div>
+            <div>
+                <h1>Hey, I'm {{ profile.user.first_name }}</h1>
+                <h3>I graduated from {{ profile.institution }}</h3>
+                <div class="ui horizontal segments container">
+                    <div class="ui segment">
+                        <h4>{{ profile.staff_code_number }}</h4>
+                    </div>
+                    <div class="ui segment">
+                        <h4>{{ profile.NYSC_call_up_number }}</h4>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    {% endblock %}

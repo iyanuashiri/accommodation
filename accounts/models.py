@@ -34,7 +34,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = 'email_address'
-    REQUIRED_FIELDS = ['fullname', 'business_name']
+    REQUIRED_FIELDS = []
 
     class Meta:
         verbose_name = _('user')
@@ -44,8 +44,8 @@ class User(AbstractBaseUser, PermissionsMixin):
         """
         Return the fullname
         """
-        fullname = '{0} {1}'.format(self.first_name, self.last_name)
-        return fullname
+        full_name = '%s %s' % (self.first_name, self.last_name)
+        return full_name
 
     def get_short_name(self):
         """Return the short name for the user."""
@@ -64,7 +64,7 @@ class Tenant(models.Model):
         verbose_name_plural = 'tenants'
 
     def __str__(self):
-        return self.user.fullname
+        return self.user.first_name
 
 
 class LandLord(models.Model):
@@ -75,4 +75,4 @@ class LandLord(models.Model):
         verbose_name_plural = 'landlords'
 
     def __str__(self):
-        return self.user.fullname
+        return self.user.first_name
