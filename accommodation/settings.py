@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'cloudinary',
+    'crispy_forms',
 
     'accounts',
     'profiles',
