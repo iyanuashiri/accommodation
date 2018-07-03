@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'crispy_forms',
     'tinymce',
+    'filebrowser',
 
     'accounts',
     'profiles',
