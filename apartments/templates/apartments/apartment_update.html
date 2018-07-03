@@ -2,7 +2,7 @@
 {% load crispy_forms_filters %}
     {% block content %}
         {{ form.media }}
-        <div class="mx-auto w-75">
+        <div class="ui segment text container">
             <h1></h1>
             <form method="post" action="{% url 'apartments:update' apartment.id %}" enctype="multipart/form-data"> {% csrf_token %}
                 {{ form|crispy }}

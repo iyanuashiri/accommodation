@@ -2,13 +2,12 @@
 {% load crispy_forms_filters %}
     {% block content %}
         {{ form.media }}
-        <div class="ui segment container">
+        <div class="ui segment text container">
             <h1>Create an Apartment</h1>
             <form method="post" action="{% url 'apartments:create' %}" enctype="multipart/form-data"> {% csrf_token %}
                 {{ form|crispy }}
                 <button class="" type="submit"> Create</button>
             </form>
-      </div>
-
+        </div>
 
     {% endblock %}
