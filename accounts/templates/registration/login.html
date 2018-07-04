@@ -1,4 +1,5 @@
 {% extends "registration/base.html" %}
+{% load crispy_forms_filters %}
 
 {% block content %}
 <div class="mx-auto w-50">
@@ -33,7 +34,7 @@
 </table>
 
 {% endcomment %}
-    {{ form.as_p }}
+    {{ form|crispy}}
 
 <input type="submit" value="login" />
 <input type="hidden" name="next" value="{{ next }}" />
