@@ -2,7 +2,12 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mass_mail
+from django.contrib import messages
 
+from accounts.models import User
 from .models import Apartment
 
 # Create your views here.
@@ -47,4 +52,15 @@ class ApartmentDelete(LoginRequiredMixin, SuccessMessageMixin, generic.DeleteVie
     template_name = 'apartments/apartment_confirm_delete.html'
     success_url = reverse_lazy('apartments:delete')
     success_message = "%(title)s was updated successfully"
+
+
+@login_required()
+def request_contact(request, apartment_id):
+    apartment = get_object_or_404(Apartment, apartment_id)
+    tenant = User.objects.get(email_address=request.user.email_address)
+    message_to_tenant = ('Request Received', 'Congratulations {}, one of our agents will contact shortly'.format(tenant.first_name, 'dont-reply@example.com', '{}'.format(tenant.email_address)))
+    message_to_agent = ('Request for contact', '{0} is interested in {1}. His mobile number is {2}'.format(tenant.get_full_name(), apartment.title, tenant.profile.mobile_number), 'ayo@example.com', 'ayo@gmail.com')
+    send_mass_mail((message_to_tenant, message_to_agent), fail_silently=False)
+    messages.success(request, 'Congratulations, one of our agents will contact shortly')
+    return redirect('apartments:detail', pk=apartment.pk)
 
