@@ -1,6 +1,9 @@
 from django import forms
 from django.contrib.auth.models import User
 
+from phonenumber_field.formfields import PhoneNumberField
+from phonenumber_field.widgets import PhoneNumberInternationalFallbackWidget
+
 from .models import Profile
 
 
@@ -12,6 +15,9 @@ class UserForm(forms.ModelForm):
 
 
 class ProfileForm(forms.ModelForm):
+    mobile_number = PhoneNumberField(
+        widget= PhoneNumberInternationalFallbackWidget(region='NG')
+    )
 
     class Meta:
         model = Profile
