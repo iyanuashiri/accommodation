@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'tinymce',
     'filebrowser',
+    'localflavor',
+    'phonenumber_field',
 
     'accounts',
     'profiles',
@@ -148,18 +150,22 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 cloudinary.config(
     cloud_name = config('CLOUD_NAME'),
     api_key = config('API_KEY'),
     api_secret = config('API_SECRET')
 )
 
+PHONENUMBER_DEFAULT_REGION = 'NG'
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 TINYMCE_DEFAULT_CONFIG = {
     'height': 360,
-    'width': 970,
+    'width': 660,
     'cleanup_on_startup': True,
     'custom_undo_redo_levels': 20,
     'selector': 'textarea',
@@ -185,3 +191,9 @@ TINYMCE_DEFAULT_CONFIG = {
     'menubar': True,
     'statusbar': True,
     }
+
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS')
