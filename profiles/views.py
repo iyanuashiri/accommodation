@@ -1,9 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 
-from accounts.models import Tenant, User
 from .forms import ProfileForm, UserForm
 from .models import Profile
 
@@ -24,6 +23,7 @@ def edit_profile(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
+            return redirect('profiles:detail', pk=request.user.profile.pk)
 
     else:
 
