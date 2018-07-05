@@ -13,7 +13,7 @@ from .models import Apartment
 # Create your views here.
 
 
-class ApartmentList(LoginRequiredMixin, generic.ListView):
+class ApartmentList(generic.ListView):
     model = Apartment
     template_name = 'apartments/apartment_list.html'
     context_object_name = 'apartments'

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load staticfiles %}
+{% load cloudinary %}
 
 <html lang="en">
 <head>
@@ -13,6 +14,7 @@
     <title>Accommodation</title>
 </head>
 <body>
+    {% if user.is_authenticated %}
 
     <div class="ui massive menu">
 
@@ -29,13 +31,33 @@
             Home
         </a>
         <div>
-            <a class="item" href="{% url 'profiles:detail' user.id %}">Profile</a>
+            <a class="item" href="{% url 'profiles:detail' user.profile.id %}">Profile</a>
         </div>
         <div>
-            <a class="ui yellow massive button">Logout</a>
+            <a class="ui yellow massive button" href="{% url 'accounts:logout' %}">Logout</a>
         </div>
 
     </div>
+    {% else %}
+
+    <div class="ui massive menu">
+
+        <a class="header item">
+            Home
+        </a>
+        <div>
+            <a class="header item" href="">How It Works</a>
+        </div>
+        <div>
+            <a class="ui massive button" href="{% url 'accounts:login' %}">Signin</a>
+        </div>
+        <div>
+            <a class="ui yellow massive button" href="{% url 'accounts:tenant_signup' %}">Signup</a>
+        </div>
+
+    </div>
+
+    {% endif %}
 
 
         {% if messages %}

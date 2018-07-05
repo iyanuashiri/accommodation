@@ -1,9 +1,11 @@
 {% extends 'apartments/base.html' %}
 {% load cloudinary %}
     {% block content %}
-        <div class="ui grid container very padded "><h1>  Congrats {{request.user.get_full_name}}! What can we help you find? </h1></div>
-
-
+        {% if user.is_authenticated %}
+            <div class="ui grid container very padded "><h1>  Congrats {{request.user.get_full_name}}! What can we help you find? </h1></div>
+        {% else %}
+            <div class="ui grid container very padded "><h1>  Welcome, What can we help you find? </h1></div>
+        {% endif %}
         <div class="ui grid container">
             {% for apartment in apartments %}
                 <div class="four wide column">
