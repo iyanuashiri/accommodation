@@ -1,16 +1,16 @@
-{% extends 'events/base.html' %}
+{% extends 'apartments/base.html' %}
 {% load static %}
-{% load crispy_forms_filters %}
 {% load cloudinary %}
+{% load crispy_forms_filters %}
 
 
 {% block content %}
-    <div class="mx-auto w-50">
+    <div class="ui segment text container">
         <h1>Edit your profile</h1>
-        <form method="post" action="{% url 'userprofile:edit' %}" enctype="multipart/form-data">{% csrf_token %}
-            {{ user_form|crispy }}
-            {{ profile_form|crispy }}
-            <button class="mx-auto btn btn-primary btn active w-25" type="submit">Save changes</button>
+        <form method="post" action="{% url 'profiles:edit' %}" enctype="multipart/form-data">{% csrf_token %}
+            {{ user_form|crispy}}
+            {{ profile_form|crispy}}
+            <button class="" type="submit">Save changes</button>
         </form>
     </div>
 {% endblock %}

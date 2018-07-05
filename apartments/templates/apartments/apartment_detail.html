@@ -1,0 +1,32 @@
+{% extends 'apartments/base.html' %}
+{% load cloudinary %}
+    {% block content %}
+        <div class="">
+            {% cloudinary apartment.picture width=1366 height=400 crop='fill' %}
+        </div>
+
+        <div class="ui horizontal segments container">
+            <div class="ui segment">
+                <h4>Available: {{ apartment.available }}</h4>
+            </div>
+            <div class="ui segment">
+                <h4>Location: {{ apartment.location }}</h4>
+            </div>
+            <div class="ui segment">
+                <h4 class="yellow">Rent: {{ apartment.rent }} per NYSC year</h4>
+            </div>
+            <div class="ui segment">
+                <h4>{{ apartment.house_type }}</h4>
+            </div>
+            <div>
+                <a class="ui yellow button" href="{% url 'apartments:request_contact' apartment.id  %}">Logout</a>
+            </div>
+        </div>
+
+        <div class="ui raised yellow segment text container">
+            <h1 class="ui header">{{ apartment.title }}</h1>
+            <p>{{ apartment.description|safe }}</p>
+        </div>
+        <button>Request Contact</button>
+
+    {% endblock %}

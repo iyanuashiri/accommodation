@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load cloudinary %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="{% static 'css/semantic.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <title>Accommodation</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+
+    <div class="ui massive menu">
+
+        <div class="left menu">
+            <div class="item">
+                <div class="ui icon input">
+                    <input placeholder="Search..." type="text">
+                    <i class="search link icon"></i>
+                </div>
+            </div>
+        </div>
+
+        <a class="header item active" href="{% url 'apartments:list' %}">
+            Home
+        </a>
+        <div>
+            <a class="item" href="{% url 'profiles:detail' user.profile.id %}">Profile</a>
+        </div>
+        <div>
+            <a class="ui yellow massive button" href="{% url 'accounts:logout' %}">Logout</a>
+        </div>
+
+    </div>
+    {% else %}
+
+    <div class="ui massive menu">
+
+        <a class="header item">
+            Home
+        </a>
+        <div>
+            <a class="header item" href="">How It Works</a>
+        </div>
+        <div>
+            <a class="ui massive button" href="{% url 'accounts:login' %}">Signin</a>
+        </div>
+        <div>
+            <a class="ui yellow massive button" href="{% url 'accounts:tenant_signup' %}">Signup</a>
+        </div>
+
+    </div>
+
+    {% endif %}
+
+
+        {% if messages %}
+        <ul class="ui success message">
+        <i class="close icon"></i>
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+    {% block content %}
+
+    {% endblock %}
+
+    <script src="{% static 'javascript/semantic.js' %}"></script>
+    <script src="{% static 'javascript/main.js' %}"></script>
+
+</body>
+</html>
