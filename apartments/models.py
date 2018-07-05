@@ -29,7 +29,7 @@ class Apartment(models.Model):
 
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, blank=True)
-    picture = CloudinaryField('image', blank=True)
+    picture = CloudinaryField('image')
     description = HTMLField('Description')
     available = models.BooleanField(default=True)
     location = models.CharField(max_length=10)

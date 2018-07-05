@@ -18,12 +18,15 @@
             <div class="ui segment">
                 <h4>{{ apartment.house_type }}</h4>
             </div>
+            <div>
+                <a class="ui yellow button" href="{% url 'apartments:request_contact' apartment.id  %}">Logout</a>
+            </div>
         </div>
 
         <div class="ui raised yellow segment text container">
             <h1 class="ui header">{{ apartment.title }}</h1>
             <p>{{ apartment.description|safe }}</p>
         </div>
-
+        <button>Request Contact</button>
 
     {% endblock %}
