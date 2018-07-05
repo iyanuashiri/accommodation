@@ -9,7 +9,7 @@ from .forms import TenantSignUpForm, LandLordSignUpForm
 class TenantSignUpView(generic.CreateView):
     form_class = TenantSignUpForm
     template_name = 'registration/signup.html'
-    success_url = reverse_lazy('accounts:login')
+    success_url = reverse_lazy('profiles:edit')
 
 
 class LandLordSignUpView(generic.CreateView):
