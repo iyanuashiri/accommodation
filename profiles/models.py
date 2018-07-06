@@ -15,7 +15,7 @@ class Profile(models.Model):
     picture = CloudinaryField('image', blank=True, null=True)
     institution = models.CharField(max_length=100)
     NYSC_call_up_number = models.CharField(max_length=50)
-    staff_code_number = models.CharField(max_length=50)
+    state_code_number = models.CharField(max_length=50)
     mobile_number = PhoneNumberField()
     state_of_service = models.CharField(max_length=20)
 
