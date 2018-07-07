@@ -19,7 +19,7 @@
                 <h4>{{ apartment.house_type }}</h4>
             </div>
             <div>
-                <a class="ui yellow button" href="{% url 'apartments:request_contact' apartment.id  %}">Logout</a>
+                <a class="ui yellow button" href="{% url 'apartments:request_contact' apartment.id  %}">Request Contact</a>
             </div>
         </div>
 
@@ -27,6 +27,5 @@
             <h1 class="ui header">{{ apartment.title }}</h1>
             <p>{{ apartment.description|safe }}</p>
         </div>
-        <button>Request Contact</button>
 
     {% endblock %}

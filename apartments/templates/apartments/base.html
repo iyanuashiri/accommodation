@@ -19,7 +19,7 @@
 <body>
     {% if user.is_authenticated %}
 
-    <div class="ui massive menu">
+    <div class="ui menu">
 
         <div class="left menu">
             <div class="item">
@@ -30,33 +30,32 @@
             </div>
         </div>
 
-        <a class="header item active" href="{% url 'apartments:list' %}">
+        <a class="header yellow item active" href="{% url 'apartments:list' %}">
             Home
         </a>
-        <div>
-            <a class="item" href="{% url 'profiles:detail' user.profile.id %}">Profile</a>
-        </div>
-        <div>
-            <a class="ui yellow massive button" href="{% url 'accounts:logout' %}">Logout</a>
-        </div>
+
+        <a class="header yellow item active" href="{% url 'profiles:detail' user.profile.id %}">Profile</a>
+
+        <a class="ui yellow button" href="{% url 'accounts:logout' %}">Sign out</a>
+
 
     </div>
     {% else %}
 
-    <div class="ui massive menu">
+    <div class="ui menu">
 
-        <a class="header item">
+        <a class="header yellow item active" href="{% url 'apartments:list' %}">
             Home
         </a>
-        <div>
-            <a class="header item" href="">How It Works</a>
-        </div>
-        <div>
-            <a class="ui massive button" href="{% url 'accounts:login' %}">Signin</a>
-        </div>
-        <div>
-            <a class="ui yellow massive button" href="{% url 'accounts:tenant_signup' %}">Signup</a>
-        </div>
+
+        <a class="header yellow item active" href="">How It Works</a>
+
+
+        <a class="ui button" href="{% url 'accounts:login' %}">Sign in</a>
+
+
+        <a class="ui yellow button" href="{% url 'accounts:tenant_signup' %}">Sign up</a>
+
 
     </div>
 
