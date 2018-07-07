@@ -5,7 +5,7 @@ lib64
 pip-selfcheck.json
 share/
 pyvenv.cfg
-
+.env
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
