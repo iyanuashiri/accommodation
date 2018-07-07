@@ -1,7 +1,6 @@
 import datetime
 
 from django import forms
-from django.contrib.auth.models import User
 from django.forms.widgets import SelectDateWidget
 from django.utils import datetime_safe
 
@@ -9,13 +8,14 @@ from phonenumber_field.formfields import PhoneNumberField
 from phonenumber_field.widgets import PhoneNumberInternationalFallbackWidget
 
 from .models import Profile
+from accounts.models import User
 
 
 class UserForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'email')
+        fields = ('first_name', 'last_name', 'email_address')
 
 
 class ProfileForm(forms.ModelForm):
