@@ -4,6 +4,7 @@
 
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -11,6 +12,8 @@
     <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick-theme.css' %}"/>
     <title>Accommodation</title>
 </head>
 <body>
@@ -57,6 +60,14 @@
 
     </div>
 
+    <div class="your-class">
+        <img src="{% cloudinary_url 'sammie-vasquez-582770-unsplash.jpg' width=1366 height=400 crop='fill' %}">
+        <img src="{% cloudinary_url 'naomi-hebert-188183-unsplash.jpg' width=1366 height=400 crop='fill' %}">
+        <img src="{% cloudinary_url 'naomi-hebert-188443-unsplash.jpg' width=1366 height=400 crop='fill' %}">
+        <img src="{% cloudinary_url 'iam-se7en-657490-unsplash.jpg' width=1366 height=400 crop='fill' %}">
+    </div>
+
+
     {% endif %}
 
 
@@ -73,6 +84,9 @@
 
     {% endblock %}
 
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="{% static 'javascript/slick.js' %}"></script>
     <script src="{% static 'javascript/semantic.js' %}"></script>
     <script src="{% static 'javascript/main.js' %}"></script>
 
