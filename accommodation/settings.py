@@ -199,4 +199,4 @@ EMAIL_PORT = config('EMAIL_PORT')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS')
 
 # Force https throughout the entire site
-SECURE_SSL_REDIRECT = True
+# SECURE_SSL_REDIRECT = True
