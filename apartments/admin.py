@@ -14,3 +14,7 @@ class ApartmentAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Apartment, ApartmentAdmin)
+admin.site.site_header = 'Lodgeme Administration'
+admin.site.site_title = 'Lodgeme Admin'
+admin.site.index_title = 'Lodgeme Administration'
+

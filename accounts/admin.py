@@ -9,3 +9,7 @@ class UserAdmin(admin.ModelAdmin):
 
 
 admin.site.register(User, UserAdmin)
+admin.site.site_header = 'Lodgeme Administration'
+admin.site.site_title = 'Lodgeme Admin'
+admin.site.index_title = 'Lodgeme Administration'
+

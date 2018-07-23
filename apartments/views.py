@@ -54,12 +54,17 @@ class ApartmentDelete(LoginRequiredMixin, SuccessMessageMixin, generic.DeleteVie
 
 
 @login_required()
-def request_contact(request, apartment_id):
-    apartment = get_object_or_404(Apartment, apartment_id)
+def request_contact(request, pk):
+    apartment = get_object_or_404(Apartment, pk=pk)
     tenant = User.objects.get(email_address=request.user.email_address)
-    message_to_tenant = ('Request Received', 'Congratulations {}, one of our agents will contact shortly'.format(tenant.first_name, 'dont-reply@example.com', '{}'.format(tenant.email_address)))
-    message_to_agent = ('Request for contact', '{0} is interested in {1}. His mobile number is {2}'.format(tenant.get_full_name(), apartment.title, tenant.profile.mobile_number), 'ayo@example.com', 'ayo@gmail.com')
-    send_mass_mail((message_to_tenant, message_to_agent), fail_silently=False)
+    tenant_email = request.user.email_address
+    message_to_tenant = ('Request Received', 'Congratulations {}, one of our agents will contact shortly'.format(tenant.first_name), 'no-reply@lodgeme.com.ng', ['{}'.format(tenant_email)])
+    message_to_agent = ('Request for contact', '{0} is interested in {1}. His mobile number is {2}'.format(tenant.get_full_name(), apartment.title, tenant.profile.mobile_number), 'ayolodgeme@gmail.com', ['adekoyaayomide5@gmail.com'])
+    datatuple = (
+        message_to_tenant,
+        message_to_agent,
+    )
+    send_mass_mail(datatuple)
     messages.success(request, 'Congratulations, one of our agents will contact shortly')
     return redirect('apartments:detail', pk=apartment.pk)
 
