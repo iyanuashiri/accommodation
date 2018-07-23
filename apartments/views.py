@@ -17,7 +17,6 @@ class ApartmentList(generic.ListView):
     model = Apartment
     template_name = 'apartments/apartment_list.html'
     context_object_name = 'apartments'
-    paginate_by = 50
     queryset = Apartment.objects.all()
 
 
