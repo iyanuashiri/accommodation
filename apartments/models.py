@@ -41,6 +41,8 @@ class Apartment(models.Model):
     house_type = models.CharField(max_length=50)
     duration = models.CharField(max_length=50, default='1 YEAR')
     number_of_rooms = models.CharField(max_length=2, choices=NUMBER_OF_ROOMS, default=ONE)
+    landlord_name = models.CharField(max_length=50, default='Ayomide')
+    landlord_number = models.CharField(max_length=50, default='07034366179')
 
     class Meta:
         verbose_name_plural = 'apartments'

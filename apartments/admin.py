@@ -8,7 +8,7 @@ from .models import Apartment
 class ApartmentAdmin(admin.ModelAdmin):
 
     list_display = ('title', 'location', 'number_of_rooms', 'duration')
-    fields = ('title', 'picture', 'description', 'location', 'rent', 'number_of_rooms', 'house_type', 'duration')
+    fields = ('title', 'picture', 'description', 'location', 'rent', 'number_of_rooms', 'house_type', 'duration', 'landlord_name', 'landlord_number')
 
     search_fields = ('title', 'description')
 

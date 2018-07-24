@@ -17,4 +17,4 @@ class ApartmentForm(forms.ModelForm):
 
     class Meta:
         model = Apartment
-        fields = ('title', 'picture', 'description', 'location', 'rent', 'number_of_rooms', 'house_type', 'duration')
+        fields = ('title', 'picture', 'description', 'location', 'rent', 'number_of_rooms', 'house_type', 'duration', 'landlord_name', 'landlord_number')
