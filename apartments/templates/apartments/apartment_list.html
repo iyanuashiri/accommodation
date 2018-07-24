@@ -6,9 +6,9 @@
         {% else %}
             <div class="ui grid container very padded "><h1>  Welcome, What can we help you find? </h1></div>
         {% endif %}
-        <div class="ui grid container">
+        <div class="ui stackable grid container">
             {% for apartment in apartments %}
-                <div class="four wide column">
+                <div class="stackable four wide column grid">
                     <div class="ui yellow raised card">
                         <div class="ui slide masked reveal image">
                             <img src="{% cloudinary_url apartment.picture default_image='sample.jpg' %}" class="visible content">
